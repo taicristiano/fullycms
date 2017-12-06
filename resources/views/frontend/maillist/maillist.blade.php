@@ -29,13 +29,13 @@
             {!! Form::open(array('route' => 'frontend.maillist')) !!}
 
             <!-- Email -->
-            <div class="control-group {!! $errors->has('email') ? 'has-error' : '' !!}">
+            <div class="control-group {{ $errors->has('email') ? 'has-error' : '' }}">
                 <label class="control-label" for="email">Email Address</label>
 
                 <div class="controls">
                     {!! Form::text('email', null, array('class'=>'form-control', 'id' => 'email', 'placeholder'=>'Email Address', 'value'=>Input::old('email'))) !!}
                     @if ($errors->first('email'))
-                    <span class="help-block">{!! $errors->first('email') !!}</span>
+                    <span class="help-block">{{ $errors->first('email') }}</span>
                     @endif
                 </div>
             </div>

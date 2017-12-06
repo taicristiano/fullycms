@@ -48,20 +48,20 @@
     <div style="text-align: center" class="row">
         <div class="video-container">
         @if($video->type == 'youtube')
-            <iframe width="853" height="480" src="http://www.youtube.com/embed/{!! $video->video_id !!}?autoplay=1" frameborder="0" allowfullscreen></iframe>
+            <iframe width="853" height="480" src="http://www.youtube.com/embed/{{ $video->video_id }}?autoplay=1" frameborder="0" allowfullscreen></iframe>
         @else
-          <iframe width="853" height="480" src="http://player.vimeo.com/video/{!! $video->video_id !!}?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff&amp;autoplay=1" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+          <iframe width="853" height="480" src="http://player.vimeo.com/video/{{ $video->video_id }}?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff&amp;autoplay=1" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
         @endif
         </div>
     </div>
     <div class="box-detail">
         <h5 class="heading">
-            <a href="{!! URL::route('dashboard.video.show', array('id'=>$video->id)) !!}">{!! $video->title !!}</a>
+            <a href="{{ URL::route('dashboard.video.show', array('id'=>$video->id)) }}">{{ $video->title }}</a>
         </h5>
         <ul class="list-inline gallery-details">
-            <li>by <a href="#">{!! $video['details']['uploader'] !!}</a></li>
+            <li>by <a href="#">{{ $video['details']['uploader'] }}</a></li>
             <li style="display:inline-table" class="pull-right">
-                <i class="fa fa-eye fa-fw"></i>&nbsp;{!! $video['details']['view_count'] !!}&nbsp;<i class="fa fa-chevron-circle-up fa-fw"></i>{!! $video['details']['like_count'] !!}&nbsp;<i class="fa fa-comments fa-fw"></i> {!! $video['details']['comment_count'] !!}
+                <i class="fa fa-eye fa-fw"></i>&nbsp;{{ $video['details']['view_count'] }}&nbsp;<i class="fa fa-chevron-circle-up fa-fw"></i>{{ $video['details']['like_count'] }}&nbsp;<i class="fa fa-comments fa-fw"></i> {{ $video['details']['comment_count'] }}
             </li>
         </ul>
     </div>

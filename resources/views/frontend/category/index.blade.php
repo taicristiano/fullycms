@@ -42,17 +42,17 @@
             <div class="blog">
                 @foreach($articles as $article)
                 <div class="blog-item">
-                    <img class="img-responsive img-blog" src="{!! url($article->path . $article->file_name) !!}" width="100%" alt=""/>
+                    <img class="img-responsive img-blog" src="{{ url($article->path . $article->file_name) }}" width="100%" alt=""/>
 
                     <div class="blog-content">
-                        <a href="{!! URL::route('dashboard.article.show', array('slug'=>$article->slug)) !!}"><h3>{!! $article->title !!}</h3></a>
+                        <a href="{{ URL::route('dashboard.article.show', array('slug'=>$article->slug)) }}"><h3>{{ $article->title }}</h3></a>
 
                         <div class="entry-meta">
                             <span><i class="icon-user"></i> <a href="#">Sefa</a></span>
-                            <span datetime="{!! $article->created_at !!}" class="time"></span>
+                            <span datetime="{{ $article->created_at }}" class="time"></span>
                         </div>
                         <p>{!! $article->content !!}</p>
-                        <a class="btn btn-default" href="{!! URL::route('dashboard.article.show', array('slug'=>$article->slug)) !!}">Read More <i class="icon-angle-right"></i></a>
+                        <a class="btn btn-default" href="{{ URL::route('dashboard.article.show', array('slug'=>$article->slug)) }}">Read More <i class="icon-angle-right"></i></a>
                     </div>
                 </div>
                 <!--/.blog-item-->

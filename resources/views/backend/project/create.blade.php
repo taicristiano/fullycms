@@ -10,7 +10,7 @@
         <small> | Add Project</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="{!! url(getLang(). '/admin/project') !!}"><i class="fa fa-gears"></i> Project</a></li>
+        <li><a href="{{ url(getLang(). '/admin/project') }}"><i class="fa fa-gears"></i> Project</a></li>
         <li class="active">Add Project</li>
     </ol>
 </section>
@@ -21,7 +21,7 @@
     {!! Form::open(array('action' => '\Fully\Http\Controllers\Admin\ProjectController@store', 'files'=>true)) !!}
 
     <!-- Title -->
-    <div class="control-group {!! $errors->has('title') ? 'has-error' : '' !!}">
+    <div class="control-group {{ $errors->has('title') ? 'has-error' : '' }}">
         <label class="control-label" for="title">Title</label>
 
         <div class="controls"> {!! Form::text('title', null, array('class'=>'form-control', 'id' => 'title', 'placeholder'=>'Title', 'value'=>Input::old('title'))) !!}
@@ -31,18 +31,18 @@
     <br>
 
     <!-- Description -->
-    <div class="control-group {!! $errors->has('description') ? 'has-error' : '' !!}">
+    <div class="control-group {{ $errors->has('description') ? 'has-error' : '' }}">
         <label class="control-label" for="description">Description</label>
 
         <div class="controls"> {!! Form::textarea('description', null, array('class'=>'form-control', 'id' => 'description', 'placeholder'=>'Description', 'value'=>Input::old('content'))) !!}
             @if ($errors->first('description'))
-            <span class="help-block">{!! $errors->first('description') !!}</span> @endif
+            <span class="help-block">{{ $errors->first('description') }}</span> @endif
         </div>
     </div>
     <br>
 
     <!-- Image -->
-    <div class="fileinput fileinput-new control-group {!! $errors->has('image') ? 'has-error' : '' !!}" data-provides="fileinput">
+    <div class="fileinput fileinput-new control-group {{ $errors->has('image') ? 'has-error' : '' }}" data-provides="fileinput">
         <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"></div>
         <div> <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span> {!! Form::file('image', null, array('class'=>'form-control', 'id' => 'image', 'placeholder'=>'Image', 'value'=>Input::old('image'))) !!}
       @if ($errors->first('image')) <span class="help-block">{!! $errors->first('image') !!}</span> @endif </span>
@@ -55,7 +55,7 @@
     <script type="text/javascript">
         window.onload = function () {
             CKEDITOR.replace('description', {
-                "filebrowserBrowseUrl": "{!! url('filemanager/show') !!}"
+                "filebrowserBrowseUrl": "{{ url('filemanager/show') }}"
             });
         };
     </script>

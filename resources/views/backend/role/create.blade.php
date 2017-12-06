@@ -7,7 +7,7 @@
         <small> | Add Role</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="{!! url(getLang(). '/admin/role') !!}"><i class="fa fa-user"></i> Role</a></li>
+        <li><a href="{{ url(getLang(). '/admin/role') }}"><i class="fa fa-user"></i> Role</a></li>
         <li class="active">Add User</li>
     </ol>
 </section>
@@ -17,13 +17,13 @@
     {!! Form::open(array('action' => '\Fully\Http\Controllers\Admin\RoleController@store')) !!}
 
     <!-- Role Name -->
-    <div class="control-group {!! $errors->has('name') ? 'has-error' : '' !!}">
+    <div class="control-group {{ $errors->has('name') ? 'has-error' : '' }}">
         <label class="control-label" for="name">Name</label>
 
         <div class="controls">
             {!! Form::text('name', null, array('class'=>'form-control', 'id' => 'name', 'placeholder'=>'Role Name', 'value'=>Input::old('name'))) !!}
             @if ($errors->first('name'))
-            <span class="help-block">{!! $errors->first('name') !!}</span>
+            <span class="help-block">{{ $errors->first('name') }}</span>
             @endif
         </div>
     </div>
@@ -77,22 +77,22 @@
 
             @foreach (Config::get('fully.modules') as $module=>$value)
             <tr>
-                <td>{!! ucwords(str_replace('_', ' ', $module)) !!}
-                    <input type="hidden" value="0" name="permissions[admin.{!! $module !!}.index]">
-                    <input type="hidden" value="0" name="permissions[admin.{!! $module !!}.view]">
-                    <input type="hidden" value="0" name="permissions[admin.{!! $module !!}.create]">
-                    <input type="hidden" value="0" name="permissions[admin.{!! $module !!}.store]">
-                    <input type="hidden" value="0" name="permissions[admin.{!! $module !!}.edit]">
-                    <input type="hidden" value="0" name="permissions[admin.{!! $module !!}.update]">
-                    <input type="hidden" value="0" name="permissions[admin.{!! $module !!}.destroy]">
+                <td>{{ ucwords(str_replace('_', ' ', $module)) }}
+                    <input type="hidden" value="0" name="permissions[admin.{{ $module }}.index]">
+                    <input type="hidden" value="0" name="permissions[admin.{{ $module }}.view]">
+                    <input type="hidden" value="0" name="permissions[admin.{{ $module }}.create]">
+                    <input type="hidden" value="0" name="permissions[admin.{{ $module }}.store]">
+                    <input type="hidden" value="0" name="permissions[admin.{{ $module }}.edit]">
+                    <input type="hidden" value="0" name="permissions[admin.{{ $module }}.update]">
+                    <input type="hidden" value="0" name="permissions[admin.{{ $module }}.destroy]">
                 </td>
-                <td><input type="checkbox" value="1" name="permissions[admin.{!! $module !!}.index]"></td>
-                <td><input type="checkbox" value="1" name="permissions[admin.{!! $module !!}.view]"></td>
-                <td><input type="checkbox" value="1" name="permissions[admin.{!! $module !!}.create]"></td>
-                <td><input type="checkbox" value="1" name="permissions[admin.{!! $module !!}.store]"></td>
-                <td><input type="checkbox" value="1" name="permissions[admin.{!! $module !!}.edit]"></td>
-                <td><input type="checkbox" value="1" name="permissions[admin.{!! $module !!}.update]"></td>
-                <td><input type="checkbox" value="1" name="permissionsadmin.[{!! $module !!}.destroy]"></td>
+                <td><input type="checkbox" value="1" name="permissions[admin.{{ $module }}.index]"></td>
+                <td><input type="checkbox" value="1" name="permissions[admin.{{ $module }}.view]"></td>
+                <td><input type="checkbox" value="1" name="permissions[admin.{{ $module }}.create]"></td>
+                <td><input type="checkbox" value="1" name="permissions[admin.{{ $module }}.store]"></td>
+                <td><input type="checkbox" value="1" name="permissions[admin.{{ $module }}.edit]"></td>
+                <td><input type="checkbox" value="1" name="permissions[admin.{{ $module }}.update]"></td>
+                <td><input type="checkbox" value="1" name="permissionsadmin.[{{ $module }}.destroy]"></td>
             </tr>
             @endforeach
             </tbody>

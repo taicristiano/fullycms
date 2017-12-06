@@ -7,7 +7,7 @@
         <small> | Show Page</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="{!! langRoute('admin.page.index') !!}"><i class="fa fa-bookmark"></i> Page</a></li>
+        <li><a href="{{ langRoute('admin.page.index') }}"><i class="fa fa-bookmark"></i> Page</a></li>
         <li class="active">Show Page</li>
     </ol>
 </section>
@@ -17,7 +17,7 @@
     <div class="col-lg-10">
         <div class="pull-left">
             <div class="btn-toolbar">
-                <a href="{!! langRoute('admin.page.index') !!}"
+                <a href="{{ langRoute('admin.page.index') }}"
                    class="btn btn-primary"> <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Back </a>
             </div>
         </div>
@@ -26,11 +26,11 @@
             <tbody>
             <tr>
                 <td><strong>Title</strong></td>
-                <td>{!! $page->title !!}</td>
+                <td>{{ $page->title }}</td>
             </tr>
             <tr>
                 <td><strong>Published</strong></td>
-                <td>{!! $page->is_published !!}</td>
+                <td>{{ $page->is_published }}</td>
             </tr>
             <tr>
                 <td><strong>Content</strong></td>
@@ -38,11 +38,11 @@
             </tr>
             <tr>
                 <td><strong>Date Created</strong></td>
-                <td>{!! $page->created_at !!}</td>
+                <td>{{ $page->created_at }}</td>
             </tr>
             <tr>
                 <td><strong>Date Updated</strong></td>
-                <td>{!! $page->updated_at !!}</td>
+                <td>{{ $page->updated_at }}</td>
             </tr>
             </tbody>
         </table>

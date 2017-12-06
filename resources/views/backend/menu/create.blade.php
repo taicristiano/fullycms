@@ -23,7 +23,7 @@
 <section class="content-header">
     <h1> Menu <small> | Add Menu</small> </h1>
     <ol class="breadcrumb">
-        <li><a href="{!! url(getLang(). '/admin/menu') !!}">Menu</a></li>
+        <li><a href="{{ url(getLang(). '/admin/menu') }}">Menu</a></li>
         <li class="active">Add Menu Item</li>
     </ol>
 </section>
@@ -33,13 +33,13 @@
 
     {!! Form::open(array('action' => '\Fully\Http\Controllers\Admin\MenuController@store')) !!}
     <!-- Title -->
-    <div class="control-group {!! $errors->has('title') ? 'has-error' : '' !!}">
+    <div class="control-group {{ $errors->has('title') ? 'has-error' : '' }}">
         <label class="control-label" for="title">Title</label>
 
         <div class="controls">
             {!! Form::text('title', null, array('class'=>'form-control', 'id' => 'title', 'placeholder'=>'Title', 'value'=>Input::old('title'))) !!}
             @if ($errors->first('title'))
-            <span class="help-block">{!! $errors->first('title') !!}</span>
+            <span class="help-block">{{ $errors->first('title') }}</span>
             @endif
         </div>
         <br>
@@ -65,26 +65,26 @@
     </div>
 
     <!-- Modules -->
-    <div class="control-group {!! $errors->has('options') ? 'has-error' : '' !!} modules">
+    <div class="control-group {{ $errors->has('options') ? 'has-error' : '' }} modules">
         <label class="control-label" for="title">Options</label>
 
         <div class="controls">
             {!! Form::select('option', $options, null, array('class'=>'form-control', 'id' => 'options', 'value'=>Input::old('options'))) !!}
             @if ($errors->first('options'))
-            <span class="help-block">{!! $errors->first('options') !!}</span>
+            <span class="help-block">{{ $errors->first('options') }}</span>
             @endif
         </div>
         <br>
     </div>
 
     <!-- URL -->
-    <div style="display:none" class="control-group {!! $errors->has('url') ? 'has-error' : '' !!} url">
+    <div style="display:none" class="control-group {{ $errors->has('url') ? 'has-error' : '' }} url">
         <label class="control-label" for="first-name">URL</label>
 
         <div class="controls">
             {!! Form::text('url',null, array('class'=>'form-control', 'id' => 'url', 'placeholder'=>'Url', 'value'=>Input::old('url'))) !!}
             @if ($errors->first('url'))
-            <span class="help-block">{!! $errors->first('url') !!}</span>
+            <span class="help-block">{{ $errors->first('url') }}</span>
             @endif
         </div>
     </div>

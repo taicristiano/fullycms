@@ -8,7 +8,7 @@
                 <ul class="arrow">
                     @foreach($categories->slice(0, round($categories->count()/2)) as $category)
                     <li>
-                        <a href="{!! URL::route('dashboard.category', array('category'=>$category->slug)) !!}">{!! $category->title !!}</a>
+                        <a href="{{ URL::route('dashboard.category', array('category'=>$category->slug)) }}">{{ $category->title }}</a>
                     </li>
                     @endforeach
                 </ul>
@@ -17,7 +17,7 @@
                 <ul class="arrow">
                     @foreach($categories->slice(round($categories->count()/2), ($categories->count())) as $category)
                     <li>
-                        <a href="{!! URL::route('dashboard.category', array('category'=>$category->slug)) !!}">{!! $category->title !!}</a>
+                        <a href="{{ URL::route('dashboard.category', array('category'=>$category->slug)) }}">{{ $category->title }}</a>
                     </li>
                     @endforeach
                 </ul>
@@ -30,7 +30,7 @@
         <ul class="tag-cloud">
             @foreach($tags as $tag)
             <li>
-                <a class="btn btn-xs btn-primary" href="{!! URL::route('dashboard.tag', array('tag'=>$tag->slug)) !!}">{!! $tag->name !!}</a>
+                <a class="btn btn-xs btn-primary" href="{{ URL::route('dashboard.tag', array('tag'=>$tag->slug)) }}">{{ $tag->name }}</a>
             </li>
             @endforeach
         </ul>

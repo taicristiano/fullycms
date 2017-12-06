@@ -15,7 +15,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
-                <h1>{!! $photo_gallery->title !!}</h1>
+                <h1>{{ $photo_gallery->title }}</h1>
             </div>
             <div class="col-sm-6">
                 @yield('partial/breadcrumbs', Breadcrumbs::render('photo_gallery.show', $photo_gallery))
@@ -36,8 +36,8 @@
 
 
     @foreach($photo_gallery->photos as $photo)
-    <a rel="group" class="fancybox" href="{!! url($photo->path) !!}" title="{!! $photo->title !!}">
-        <img style="border-radius: 20px;" class="lazy left" data-original="{!! url('uploads/dropzone/thumb_' . $photo->file_name) !!}"/>
+    <a rel="group" class="fancybox" href="{{ url($photo->path) }}" title="{{ $photo->title }}">
+        <img style="border-radius: 20px;" class="lazy left" data-original="{{ url('uploads/dropzone/thumb_' . $photo->file_name) }}"/>
     </a>
     @endforeach
 

@@ -7,7 +7,7 @@
         <small> | Add Faq</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="{!! url(getLang(). '/admin/faq') !!}"><i class="fa fa-question"></i> Faq</a></li>
+        <li><a href="{{ url(getLang(). '/admin/faq') }}"><i class="fa fa-question"></i> Faq</a></li>
         <li class="active">Add Faq</li>
     </ol>
 </section>
@@ -17,26 +17,26 @@
 
     {!! Form::open(array('action' => '\Fully\Http\Controllers\Admin\FaqController@store')) !!}
     <!-- Question -->
-    <div class="control-group {!! $errors->has('question') ? 'has-error' : '' !!}">
+    <div class="control-group {{ $errors->has('question') ? 'has-error' : '' }}">
         <label class="control-label" for="question">Question</label>
 
         <div class="controls">
             {!! Form::text('question', null, array('class'=>'form-control', 'id' => 'question', 'placeholder'=>'Question', 'value'=>Input::old('question'))) !!}
             @if ($errors->first('question'))
-            <span class="help-block">{!! $errors->first('question') !!}</span>
+            <span class="help-block">{{ $errors->first('question') }}</span>
             @endif
         </div>
     </div>
     <br>
 
     <!-- Answer -->
-    <div class="control-group {!! $errors->has('answer') ? 'has-error' : '' !!}">
+    <div class="control-group {{ $errors->has('answer') ? 'has-error' : '' }}">
         <label class="control-label" for="answer">Answer</label>
 
         <div class="controls">
             {!! Form::textarea('answer', null, array('class'=>'form-control', 'id' => 'answer', 'placeholder'=>'Answer', 'value'=>Input::old('answer'))) !!}
             @if ($errors->first('answer'))
-            <span class="help-block">{!! $errors->first('answer') !!}</span>
+            <span class="help-block">{{ $errors->first('answer') }}</span>
             @endif
         </div>
     </div>

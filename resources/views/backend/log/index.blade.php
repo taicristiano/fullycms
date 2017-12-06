@@ -13,7 +13,7 @@
             <small> | Log View</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="{!! url(getLang(). '/admin') !!}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            <li><a href="{{ url(getLang(). '/admin') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
             <li class="active">Log View</li>
         </ol>
     </section>
@@ -27,18 +27,18 @@
             {!! Form::close() !!}
             <div class="pull-right">
                 <ul class="pagination">
-                    {!! $paginator->appends(array('levels' => $level))->render() !!}
+                    {{ $paginator->appends(array('levels' => $level))->render() }}
                 </ul>
             </div>
             <br> <br> <br> <br>
             @foreach( array_slice($paginator->toArray()['data'], (($paginator->toArray()['current_page']-1) * $paginator->toArray()['per_page']), $paginator->toArray()['per_page']) as $v )
-                <div class="callout callout-{!! ($v['type'] === 'error') ? 'danger' : $v['type'] !!}">
-                    {!! $v['log'] !!}
+                <div class="callout callout-{{ ($v['type'] === 'error') ? 'danger' : $v['type'] }}">
+                    {{ $v['log'] }}
                 </div>
             @endforeach
             <div class="pull-right">
                 <ul class="pagination">
-                    {!! $paginator->render() !!}
+                    {{ $paginator->render() }}
                 </ul>
             </div>
         </div>

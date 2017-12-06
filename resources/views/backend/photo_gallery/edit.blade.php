@@ -1,14 +1,14 @@
 @extends('backend/layout/layout')
 @section('content')
-{!! HTML::script('ckeditor/ckeditor.js') !!}
-{!! HTML::style('dropzone/css/basic.css') !!}
-{!! HTML::style('dropzone/css/dropzone.css') !!}
-{!! HTML::script('dropzone/dropzone.js') !!}
+{{ HTML::script('ckeditor/ckeditor.js') }}
+{{ HTML::style('dropzone/css/basic.css') }}
+{{ HTML::style('dropzone/css/dropzone.css') }}
+{{ HTML::script('dropzone/dropzone.js') }}
 <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1> Photo Gallery <small> | Add Photo Gallery</small> </h1>
     <ol class="breadcrumb">
-        <li><a href="{!! url(getLang(). '/admin/photo-gallery') !!}"><i class="fa fa-desktop"></i> Photo Gallery</a></li>
+        <li><a href="{{ url(getLang(). '/admin/photo-gallery') }}"><i class="fa fa-desktop"></i> Photo Gallery</a></li>
         <li class="active">Add Photo Gallery</li>
     </ol>
 </section>
@@ -51,7 +51,7 @@
 
                             $.ajax({
                                 type: "POST",
-                                url: "{!! url(getLang() . '/admin/photo-gallery-delete-image') !!}",
+                                url: "{{ url(getLang() . '/admin/photo-gallery-delete-image') }}",
                                 headers: {
                                     'X-CSRF-Token': $('meta[name="_token"]').attr('content')
                                 },
@@ -85,13 +85,13 @@
             @foreach($photo_gallery->photos as $photo)
 
             // Create the mock file:
-            var mockFile = { name: "{!! $photo->file_name !!}", size: "{!! $photo->file_size !!}" };
+            var mockFile = { name: "{{ $photo->file_name }}", size: "{{ $photo->file_size }}" };
 
             // Call the default addedfile event handler
             myDropzone.emit("addedfile", mockFile);
 
             // And optionally show the thumbnail of the file:
-            myDropzone.emit("thumbnail", mockFile, "{!! url($photo->path) !!}");
+            myDropzone.emit("thumbnail", mockFile, "{{ url($photo->path) }}");
 
             @endforeach
         });
@@ -100,36 +100,36 @@
     <br>
     {!! Form::open( array( 'route' => array( getLang() . '.admin.photo-gallery.update', $photo_gallery->id), 'method' => 'PATCH', 'files'=>true)) !!}
     <!-- Title -->
-    <div class="control-group {!! $errors->has('title') ? 'has-error' : '' !!}">
+    <div class="control-group {{ $errors->has('title') ? 'has-error' : '' }}">
         <label class="control-label" for="title">Title</label>
 
         <div class="controls">
             {!! Form::text('title', $photo_gallery->title, array('class'=>'form-control', 'id' => 'title', 'placeholder'=>'Title', 'value'=>Input::old('title'))) !!}
             @if ($errors->first('title'))
-            <span class="help-block">{!! $errors->first('title') !!}</span>
+            <span class="help-block">{{ $errors->first('title') }}</span>
             @endif
         </div>
     </div>
     <br>
     <!-- Content -->
-    <div class="control-group {!! $errors->has('content') ? 'has-error' : '' !!}">
+    <div class="control-group {{ $errors->has('content') ? 'has-error' : '' }}">
         <label class="control-label" for="title">Content</label>
 
         <div class="controls">
             {!! Form::textarea('content', $photo_gallery->content, array('class'=>'form-control', 'id' => 'content', 'placeholder'=>'Content', 'value'=>Input::old('content'))) !!}
             @if ($errors->first('content'))
-            <span class="help-block">{!! $errors->first('content') !!}</span>
+            <span class="help-block">{{ $errors->first('content') }}</span>
             @endif
         </div>
     </div>
     <br>
     <!-- Published -->
-    <div class="control-group {!! $errors->has('is_published') ? 'has-error' : '' !!}">
+    <div class="control-group {{ $errors->has('is_published') ? 'has-error' : '' }}">
 
         <div class="controls">
-            <label class="">{!! Form::checkbox('is_published', 'is_published',$photo_gallery->is_published) !!} Publish ?</label>
+            <label class="">{{ Form::checkbox('is_published', 'is_published',$photo_gallery->is_published) }} Publish ?</label>
             @if ($errors->first('is_published'))
-            <span class="help-block">{!! $errors->first('is_published') !!}</span>
+            <span class="help-block">{{ $errors->first('is_published') }}</span>
             @endif
         </div>
     </div>
@@ -140,7 +140,7 @@
     <script type="text/javascript">
         window.onload = function () {
             CKEDITOR.replace('content', {
-                "filebrowserBrowseUrl": "{!! url('filemanager/show') !!}"
+                "filebrowserBrowseUrl": "{{ url('filemanager/show') }}"
             });
         };
     </script>

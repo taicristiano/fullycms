@@ -39,16 +39,16 @@
             <div class="blog">
                 <div class="blog-item">
                     @if($article->path)
-                    <img class="img-responsive img-blog" src="{!! url($article->path . $article->file_name) !!}" width="100%" style="border: 1px solid #bdc3c7;" alt="" />
+                    <img class="img-responsive img-blog" src="{{ url($article->path . $article->file_name) }}" width="100%" style="border: 1px solid #bdc3c7;" alt="" />
                     @else
-                    <img class="img-responsive img-blog" src="{!! url('assets/images/blog_default.png') !!}" width="100%" style="border: 1px solid #bdc3c7; height: 290px;" alt=""/>
+                    <img class="img-responsive img-blog" src="{{ url('assets/images/blog_default.png') }}" width="100%" style="border: 1px solid #bdc3c7; height: 290px;" alt=""/>
                     @endif
 
                     <div class="blog-content">
-                        <h3>{!! $article->title !!}</h3>
+                        <h3>{{ $article->title }}</h3>
                         <div class="entry-meta">
                            <span><i class="icon-user"></i> <a href="#">Sefa</a></span>
-                            <span datetime="{!! $article->created_at !!}" class="time"></span>
+                            <span datetime="{{ $article->created_at }}" class="time"></span>
                         </div>
 
                         <p>{!! $article->content !!}</p>
@@ -58,7 +58,7 @@
                         <div class="tags">
                             <i class="icon-tags"></i> Tags
                             @foreach($article->tags as $tag)
-                            <a class="btn btn-xs btn-primary" href="{!! URL::route('dashboard.tag', array('tag'=>$tag->slug)) !!}">{!! $tag->name !!}</a>
+                            <a class="btn btn-xs btn-primary" href="{{ URL::route('dashboard.tag', array('tag'=>$tag->slug)) }}">{{ $tag->name }}</a>
                             @endforeach
                         </div>
                         <p>&nbsp;</p>

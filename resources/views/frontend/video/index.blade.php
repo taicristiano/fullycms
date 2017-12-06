@@ -56,22 +56,22 @@
 
         <article class="col-md-3">
             @if($item->type == 'youtube')
-            <a class="various fancybox.iframe" href="http://www.youtube.com/embed/{!! $item->video_id !!}?autoplay=1">
-                <img style="width: 100%; height: 100%" class="video-resim" src="{!! url($item->details['thumbnail_large']) !!}" alt="thumb"/>
+            <a class="various fancybox.iframe" href="http://www.youtube.com/embed/{{ $item->video_id }}?autoplay=1">
+                <img style="width: 100%; height: 100%" class="video-resim" src="{{ url($item->details['thumbnail_large']) }}" alt="thumb"/>
             </a>
             @else
-            <a class="various fancybox.iframe" href="http://player.vimeo.com/video/{!! $item->video_id !!}?title=0&amp;autoplay=1">
-                <img style="width: 100%; height: 100%" class="video-resim" src="{!! url($item->details['thumbnail_large']) !!}" alt="thumb"/>
+            <a class="various fancybox.iframe" href="http://player.vimeo.com/video/{{ $item->video_id }}?title=0&amp;autoplay=1">
+                <img style="width: 100%; height: 100%" class="video-resim" src="{{ url($item->details['thumbnail_large']) }}" alt="thumb"/>
             </a>
             @endif
             <div class="box-detail">
                 <h5 class="heading">
-                    <a href="{!! URL::route('dashboard.video.show', array('slug'=>$item->slug)) !!}">{!! $item->title !!}</a>
+                    <a href="{{ URL::route('dashboard.video.show', array('slug'=>$item->slug)) }}">{{ $item->title }}</a>
                 </h5>
                 <ul class="list-inline gallery-details">
-                    <li>by <a href="#">{!! $item['details']['uploader'] !!}</a></li>
+                    <li>by <a href="#">{{ $item['details']['uploader'] }}</a></li>
                     <li style="display:inline-table" class="pull-right">
-                        <i class="fa fa-eye fa-fw"></i>&nbsp;{!! $item['details']['view_count'] !!}&nbsp;<i class="fa fa-chevron-circle-up fa-fw"></i>{!! $item['details']['like_count'] !!}&nbsp;<i class="fa fa-comments fa-fw"></i> {!! $item['details']['comment_count'] !!}
+                        <i class="fa fa-eye fa-fw"></i>&nbsp;{{ $item['details']['view_count'] }}&nbsp;<i class="fa fa-chevron-circle-up fa-fw"></i>{{ $item['details']['like_count'] }}&nbsp;<i class="fa fa-comments fa-fw"></i> {{ $item['details']['comment_count'] }}
                     </li>
                 </ul>
             </div>

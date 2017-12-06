@@ -10,7 +10,7 @@
         <small> | Control Panel</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="{!! url(getLang(). '/admin') !!}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="{{ url(getLang(). '/admin') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li class="active">Faq</li>
     </ol>
 </section>
@@ -21,7 +21,7 @@
         <br>
 
         <div class="pull-left">
-            <div class="btn-toolbar"><a href="{!! langRoute('admin.faq.create') !!}" class="btn btn-primary">
+            <div class="btn-toolbar"><a href="{{ langRoute('admin.faq.create') }}" class="btn btn-primary">
                     <span class="glyphicon glyphicon-plus"></span>&nbsp;Add Faq </a></div>
         </div>
         <br>
@@ -40,8 +40,8 @@
                 @foreach( $faqs as $faq )
                 <tr>
                     <td>
-                        <a href="{!! langRoute('admin.faq.show', array($faq->id)) !!}" class="btn btn-link btn-xs">
-                            {!! $faq->question !!}
+                        <a href="{{ langRoute('admin.faq.show', array($faq->id)) }}" class="btn btn-link btn-xs">
+                            {{ $faq->question }}
                         </a>
                     <td>
                         <div class="btn-group">
@@ -51,25 +51,25 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="{!! langRoute('admin.faq.show', array($faq->id)) !!}">
+                                    <a href="{{ langRoute('admin.faq.show', array($faq->id)) }}">
                                         <span class="glyphicon glyphicon-eye-open"></span>&nbsp;Show Faq
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{!! langRoute('admin.faq.edit', array( $faq->id)) !!}">
+                                    <a href="{{ langRoute('admin.faq.edit', array( $faq->id)) }}">
                                         <span class="glyphicon glyphicon-edit"></span>&nbsp;Edit Faq
                                     </a>
                                 </li>
                                 <li class="divider"></li>
                                 <li>
-                                    <a href="{!! URL::route('admin.faq.delete', array($faq->id)) !!}">
+                                    <a href="{{ URL::route('admin.faq.delete', array($faq->id)) }}">
                                         <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;Delete Faq
                                     </a>
                                 </li>
 
                                 <li class="divider"></li>
                                 <li>
-                                    <a target="_blank" href="{!! $faq->url !!}">
+                                    <a target="_blank" href="{{ $faq->url }}">
                                         <span class="glyphicon glyphicon-eye-open"></span>&nbsp;View On Site
                                     </a>
                                 </li>

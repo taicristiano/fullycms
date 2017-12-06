@@ -15,7 +15,7 @@
             <small> | Show Photo Gallery</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="{!! langRoute('admin.photo-gallery.index') !!}"><i class="fa fa-desktop"></i> Photo Gallery</a>
+            <li><a href="{{ langRoute('admin.photo-gallery.index') }}"><i class="fa fa-desktop"></i> Photo Gallery</a>
             </li>
             <li class="active">Show Photo Gallery</li>
         </ol>
@@ -26,7 +26,7 @@
         <div class="col-lg-10">
             <div class="pull-left">
                 <div class="btn-toolbar">
-                    <a href="{!! langRoute('admin.photo-gallery.index') !!}"
+                    <a href="{{ langRoute('admin.photo-gallery.index') }}"
                        class="btn btn-primary"> <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Back </a>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                 <tbody>
                 <tr>
                     <td><strong>Title</strong></td>
-                    <td>{!! $photo_gallery->title !!}</td>
+                    <td>{{ $photo_gallery->title }}</td>
                 </tr>
                 <tr>
                     <td><strong>Content</strong></td>
@@ -43,11 +43,11 @@
                 </tr>
                 <tr>
                     <td><strong>Date Created</strong></td>
-                    <td>{!! $photo_gallery->created_at !!}</td>
+                    <td>{{ $photo_gallery->created_at }}</td>
                 </tr>
                 <tr>
                     <td><strong>Date Updated</strong></td>
-                    <td>{!! $photo_gallery->updated_at !!}</td>
+                    <td>{{ $photo_gallery->updated_at }}</td>
                 </tr>
                 <tr>
                     <td><strong>Photos</strong></td>
@@ -56,7 +56,7 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     @foreach($photo_gallery->photos as $photo)
-                                        <img style="border-radius: 20px;" class="lazy left" data-original="{!! url('uploads/dropzone/thumb_' . $photo->file_name) !!}"/>
+                                        <img style="border-radius: 20px;" class="lazy left" data-original="{{ url('uploads/dropzone/thumb_' . $photo->file_name) }}"/>
                                     @endforeach
                                 </div>
                             </div>

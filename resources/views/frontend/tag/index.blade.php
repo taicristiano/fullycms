@@ -53,14 +53,14 @@
                     <div class="col-sm-6">
                         <ul class="arrow">
                             @foreach($categories as $category)
-                            <li><a href="{!! URL::route('dashboard.category', array('category'=>$category->title)) !!}">{!! $category->title !!}</a></li>
+                            <li><a href="{{ URL::route('dashboard.category', array('category'=>$category->title)) }}">{{ $category->title }}</a></li>
                             @endforeach
                         </ul>
                     </div>
                     <div class="col-sm-6">
                         <ul class="arrow">
                             @foreach($categories as $category)
-                            <li><a href="{!! URL::route('dashboard.category', array('category'=>$category->title)) !!}">{!! $category->title !!}</a></li>
+                            <li><a href="{{ URL::route('dashboard.category', array('category'=>$category->title)) }}">{{ $category->title }}</a></li>
                             @endforeach
                         </ul>
                     </div>
@@ -71,7 +71,7 @@
                 <h3>Tag Cloud</h3>
                 <ul class="tag-cloud">
                     @foreach($tags as $tag)
-                    <li><a class="btn btn-xs btn-primary" href="{!! URL::route('dashboard.tag', array('tag'=>$tag->slug)) !!}">{!! $tag->name !!}</a></li>
+                    <li><a class="btn btn-xs btn-primary" href="{{ URL::route('dashboard.tag', array('tag'=>$tag->slug)) }}">{{ $tag->name }}</a></li>
                     @endforeach
                 </ul>
             </div>
@@ -82,17 +82,17 @@
             <div class="blog">
                 @foreach($articles as $article)
                 <div class="blog-item">
-                    <img class="img-responsive img-blog" src="{!! url($article->path . $article->file_name) !!}" width="100%" alt=""/>
+                    <img class="img-responsive img-blog" src="{{ url($article->path . $article->file_name) }}" width="100%" alt=""/>
 
                     <div class="blog-content">
-                        <a href="{!! URL::route('dashboard.article.show', array('slug'=>$article->slug)) !!}"><h3>{!! $article->title !!}</h3></a>
+                        <a href="{{ URL::route('dashboard.article.show', array('slug'=>$article->slug)) }}"><h3>{{ $article->title }}</h3></a>
 
                         <div class="entry-meta">
                             <span><i class="icon-user"></i> <a href="#">Sefa</a></span>
-                            <span datetime="{!! $article->created_at !!}" class="time"></span>
+                            <span datetime="{{ $article->created_at }}" class="time"></span>
                         </div>
                         <p>{!! $article->content !!}</p>
-                        <a class="btn btn-default" href="{!! URL::route('dashboard.article.show', array('slug'=>$article->slug)) !!}">Read More <i class="icon-angle-right"></i></a>
+                        <a class="btn btn-default" href="{{ URL::route('dashboard.article.show', array('slug'=>$article->slug)) }}">Read More <i class="icon-angle-right"></i></a>
                     </div>
                 </div>
                 <!--/.blog-item-->

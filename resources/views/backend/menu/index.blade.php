@@ -15,13 +15,13 @@
 
                 $.ajax({
                     type: "POST",
-                    url: "{!! url(getLang() . '/admin/menu/" + id + "/toggle-publish/') !!}",
+                    url: "{{ url(getLang() . '/admin/menu/" + id + "/toggle-publish/') }}",
                     headers: {
                         'X-CSRF-Token': $('meta[name="_token"]').attr('content')
                     },
                     success: function (response) {
                         if (response['result'] == 'success') {
-                            var imagePath = (response['changed'] == 1) ? "{!! url('/') !!}/assets/images/publish_16x16.png" : "{!!url('/')!!}/assets/images/not_publish_16x16.png";
+                            var imagePath = (response['changed'] == 1) ? "{{ url('/') }}/assets/images/publish_16x16.png" : "{{url('/')}}/assets/images/not_publish_16x16.png";
                             $("#publish-image-" + id).attr('src', imagePath);
                         }
                     },
@@ -39,7 +39,7 @@
             Menu
         </h1>
         <ol class="breadcrumb">
-            <li><a href="{!! URL::route('admin.dashboard') !!}">Dashboard</a></li>
+            <li><a href="{{ URL::route('admin.dashboard') }}">Dashboard</a></li>
             <li class="active">Menu</li>
         </ol>
     </section>
@@ -50,7 +50,7 @@
         <div class="pull-right">
             <div id="msg"></div>
         </div>
-        <br> <a href="{!! langRoute('admin.menu.create') !!}" class="btn btn-primary">
+        <br> <a href="{{ langRoute('admin.menu.create') }}" class="btn btn-primary">
             <span class="glyphicon glyphicon-plus"></span>&nbsp;New Menu Item </a> <br>
         <hr>
         <div class="dd" id="nestable">
@@ -75,7 +75,7 @@
 
                     $.ajax({
                         type: "POST",
-                        url: "{!! URL::route('admin.menu.save') !!}",
+                        url: "{{ URL::route('admin.menu.save') }}",
                         data: {'json': jsonData},
                         headers: {
                             'X-CSRF-Token': $('meta[name="_token"]').attr('content')

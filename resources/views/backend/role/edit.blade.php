@@ -6,7 +6,7 @@
         <small> | Update Role</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="{!! url(getLang(). '/admin/role') !!}"><i class="fa fa-user"></i> Role</a></li>
+        <li><a href="{{ url(getLang(). '/admin/role') }}"><i class="fa fa-user"></i> Role</a></li>
         <li class="active">Update Role</li>
     </ol>
 </section>
@@ -15,13 +15,13 @@
 <div class="container">
     {!! Form::open( array( 'route' => array(getLang(). '.admin.role.update', $role->id), 'method' => 'PATCH')) !!}
     <!-- Role Name -->
-    <div class="control-group {!! $errors->has('name') ? 'has-error' : '' !!}">
+    <div class="control-group {{ $errors->has('name') ? 'has-error' : '' }}">
         <label class="control-label" for="name">Name</label>
 
         <div class="controls">
             {!! Form::text('name', $role->name, array('class'=>'form-control', 'id' => 'name', 'placeholder'=>'Role Name', 'value'=>Input::old('name'))) !!}
             @if ($errors->first('name'))
-            <span class="help-block">{!! $errors->first('name') !!}</span>
+            <span class="help-block">{{ $errors->first('name') }}</span>
             @endif
         </div>
     </div>
@@ -76,39 +76,39 @@
 
             @foreach (Config::get('fully.modules') as $module=>$value)
             <tr>
-                <td>{!! ucwords(str_replace('_', ' ', $module)) !!}
-                    <input type="hidden" value="0" name="permissions[admin.{!! $module !!}.index]">
-                    <input type="hidden" value="0" name="permissions[admin.{!! $module !!}.show]">
-                    <input type="hidden" value="0" name="permissions[admin.{!! $module !!}.view]">
-                    <input type="hidden" value="0" name="permissions[admin.{!! $module !!}.create]">
-                    <input type="hidden" value="0" name="permissions[admin.{!! $module !!}.store]">
-                    <input type="hidden" value="0" name="permissions[admin.{!! $module !!}.edit]">
-                    <input type="hidden" value="0" name="permissions[admin.{!! $module !!}.update]">
-                    <input type="hidden" value="0" name="permissions[admin.{!! $module !!}.destroy]">
+                <td>{{ ucwords(str_replace('_', ' ', $module)) }}
+                    <input type="hidden" value="0" name="permissions[admin.{{ $module }}.index]">
+                    <input type="hidden" value="0" name="permissions[admin.{{ $module }}.show]">
+                    <input type="hidden" value="0" name="permissions[admin.{{ $module }}.view]">
+                    <input type="hidden" value="0" name="permissions[admin.{{ $module }}.create]">
+                    <input type="hidden" value="0" name="permissions[admin.{{ $module }}.store]">
+                    <input type="hidden" value="0" name="permissions[admin.{{ $module }}.edit]">
+                    <input type="hidden" value="0" name="permissions[admin.{{ $module }}.update]">
+                    <input type="hidden" value="0" name="permissions[admin.{{ $module }}.destroy]">
                 </td>
                 <td>
-                    <input type="checkbox" value="1" @if(isset($role->permissions['admin.'.$module.'.index']) and $role->permissions['admin.'.$module.'.index'])checked="checked"@endif name="permissions[admin.{!! $module !!}.index]">
+                    <input type="checkbox" value="1" @if(isset($role->permissions['admin.'.$module.'.index']) and $role->permissions['admin.'.$module.'.index'])checked="checked"@endif name="permissions[admin.{{ $module }}.index]">
                 </td>
                 <td>
-                    <input type="checkbox" value="1" @if(isset($role->permissions['admin.'.$module.'.show']) and $role->permissions['admin.'.$module.'.show'])checked="checked"@endif name="permissions[admin.{!! $module !!}.show]">
+                    <input type="checkbox" value="1" @if(isset($role->permissions['admin.'.$module.'.show']) and $role->permissions['admin.'.$module.'.show'])checked="checked"@endif name="permissions[admin.{{ $module }}.show]">
                                 </td>
                 <td>
-                    <input type="checkbox" value="1" @if(isset($role->permissions['admin.'.$module.'.view']) and $role->permissions['admin.'.$module.'.view'])checked="checked"@endif name="permissions[admin.{!! $module !!}.view]">
+                    <input type="checkbox" value="1" @if(isset($role->permissions['admin.'.$module.'.view']) and $role->permissions['admin.'.$module.'.view'])checked="checked"@endif name="permissions[admin.{{ $module }}.view]">
                 </td>
                 <td>
-                    <input type="checkbox" value="1" @if(isset($role->permissions['admin.'.$module.'.create']) and $role->permissions['admin.'.$module.'.create'])checked="checked"@endif name="permissions[admin.{!! $module !!}.create]">
+                    <input type="checkbox" value="1" @if(isset($role->permissions['admin.'.$module.'.create']) and $role->permissions['admin.'.$module.'.create'])checked="checked"@endif name="permissions[admin.{{ $module }}.create]">
                 </td>
                 <td>
-                    <input type="checkbox" value="1" @if(isset($role->permissions['admin.'.$module.'.store']) and $role->permissions['admin.'.$module.'.store'])checked="checked"@endif name="permissions[admin.{!! $module !!}.store]">
+                    <input type="checkbox" value="1" @if(isset($role->permissions['admin.'.$module.'.store']) and $role->permissions['admin.'.$module.'.store'])checked="checked"@endif name="permissions[admin.{{ $module }}.store]">
                 </td>
                 <td>
-                    <input type="checkbox" value="1" @if(isset($role->permissions['admin.'.$module.'.edit']) and $role->permissions['admin.'.$module.'.edit'])checked="checked"@endif name="permissions[admin.{!! $module !!}.edit]">
+                    <input type="checkbox" value="1" @if(isset($role->permissions['admin.'.$module.'.edit']) and $role->permissions['admin.'.$module.'.edit'])checked="checked"@endif name="permissions[admin.{{ $module }}.edit]">
                 </td>
                 <td>
-                    <input type="checkbox" value="1" @if(isset($role->permissions['admin.'.$module.'.update']) and $role->permissions['admin.'.$module.'.update'])checked="checked"@endif name="permissions[admin.{!! $module !!}.update]">
+                    <input type="checkbox" value="1" @if(isset($role->permissions['admin.'.$module.'.update']) and $role->permissions['admin.'.$module.'.update'])checked="checked"@endif name="permissions[admin.{{ $module }}.update]">
                                 </td>
                 <td>
-                    <input type="checkbox" value="1" @if(isset($role->permissions['admin.'.$module.'.destroy']) and $role->permissions['admin.'.$module.'.destroy'])checked="checked"@endif name="permissions[admin.{!! $module !!}.destroy]">
+                    <input type="checkbox" value="1" @if(isset($role->permissions['admin.'.$module.'.destroy']) and $role->permissions['admin.'.$module.'.destroy'])checked="checked"@endif name="permissions[admin.{{ $module }}.destroy]">
                 </td>
             </tr>
             @endforeach
@@ -118,7 +118,7 @@
 
     <!-- Form actions -->
     {!! Form::submit('Save Changes', array('class' => 'btn btn-success')) !!}
-    <a href="{!! langUrl('/admin/role') !!}"
+    <a href="{{ langUrl('/admin/role') }}"
        class="btn btn-default">
         &nbsp;Cancel
     </a>

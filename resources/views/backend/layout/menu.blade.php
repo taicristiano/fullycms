@@ -5,7 +5,7 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="{!! gravatarUrl(Sentinel::getUser()->email) !!}" class="img-circle" alt="User Image" />
+                <img src="{{ gravatarUrl(Sentinel::getUser()->email) }}" class="img-circle" alt="User Image" />
 
             </div>
             <div class="pull-left info">

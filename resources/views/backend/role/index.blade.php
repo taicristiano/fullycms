@@ -10,7 +10,7 @@
             <small> | Control Panel</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="{!! url(getLang(). '/admin/role') !!}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            <li><a href="{{ url(getLang(). '/admin/role') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
             <li class="active">Role</li>
         </ol>
     </section>
@@ -22,7 +22,7 @@
 
             <div class="pull-left">
                 <div class="btn-toolbar">
-                    <a href="{!! langRoute('admin.role.create') !!}" class="btn btn-primary">
+                    <a href="{{ langRoute('admin.role.create') }}" class="btn btn-primary">
                         <span class="glyphicon glyphicon-plus"></span>&nbsp;New Role </a>
                 </div>
             </div>
@@ -47,17 +47,17 @@
                                             Action <span class="caret"></span> </a>
                                         <ul class="dropdown-menu">
                                             <li>
-                                                <a href="{!! langRoute('admin.role.show', array($role->id)) !!}">
+                                                <a href="{{ langRoute('admin.role.show', array($role->id)) }}">
                                                     <span class="glyphicon glyphicon-eye-open"></span>&nbsp;Show User
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="{!! langRoute('admin.role.edit', array($role->id)) !!}">
+                                                <a href="{{ langRoute('admin.role.edit', array($role->id)) }}">
                                                     <span class="glyphicon glyphicon-edit"></span>&nbsp;Edit Role </a>
                                             </li>
                                             <li class="divider"></li>
                                             <li>
-                                                <a href="{!! URL::route('admin.role.delete', array($role->id)) !!}">
+                                                <a href="{{ URL::route('admin.role.delete', array($role->id)) }}">
                                                     <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;Delete
                                                     Role </a>
                                             </li>

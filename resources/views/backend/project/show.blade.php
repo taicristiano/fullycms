@@ -7,7 +7,7 @@
         <small> | Show News</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="{!! langRoute('admin.project.index') !!}"><i class="fa fa-gears"></i> Project</a></li>
+        <li><a href="{{ langRoute('admin.project.index') }}"><i class="fa fa-gears"></i> Project</a></li>
         <li class="active">Show Project</li>
     </ol>
 </section>
@@ -17,7 +17,7 @@
     <div class="col-lg-10">
         <div class="pull-left">
             <div class="btn-toolbar">
-                <a href="{!! langRoute('admin.project.index') !!}"
+                <a href="{{ langRoute('admin.project.index') }}"
                    class="btn btn-primary"> <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;Back </a>
             </div>
         </div>
@@ -26,19 +26,19 @@
             <tbody>
             <tr>
                 <td><strong>Title</strong></td>
-                <td>{!! $project->title !!}</td>
+                <td>{{ $project->title }}</td>
             </tr>
             <tr>
                 <td><strong>Description</strong></td>
-                <td>{!! $project->description !!}</td>
+                <td>{{ $project->description }}</td>
             </tr>
             <tr>
                 <td><strong>Date Created</strong></td>
-                <td>{!! $project->created_at !!}</td>
+                <td>{{ $project->created_at }}</td>
             </tr>
             <tr>
                 <td><strong>Date Updated</strong></td>
-                <td>{!! $project->updated_at !!}</td>
+                <td>{{ $project->updated_at }}</td>
             </tr>
             </tbody>
         </table>

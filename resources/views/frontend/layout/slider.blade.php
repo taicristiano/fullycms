@@ -7,7 +7,7 @@
             $i = 0;
             ?>
             @foreach($sliders as $slider)
-            <li data-target="#main-slider" data-slide-to="{!! $i++ !!}" class="{!! (($active) ? 'active' : null) !!}"></li>
+            <li data-target="#main-slider" data-slide-to="{{ $i++ }}" class="{{ (($active) ? 'active' : null) }}"></li>
             <?php $active = false; ?>
             @endforeach
         </ol>
@@ -16,14 +16,14 @@
             <?php $active = true; ?>
             @foreach($sliders as $slider)
 
-            <div class="item {!! (($active) ? 'active' : null) !!}" style='background-image: url("{!! url($slider->path) !!}")'>
+            <div class="item {{ (($active) ? 'active' : null) }}" style='background-image: url("{{ url($slider->path) }}")'>
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="carousel-content centered">
-                                <h2 class="animation animated-item-1">{!! $slider->title !!}</h2>
+                                <h2 class="animation animated-item-1">{{ $slider->title }}</h2>
 
-                                <p class="animation animated-item-2">{!! $slider->description !!}</p>
+                                <p class="animation animated-item-2">{{ $slider->description }}</p>
                             </div>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                 <li class="active" data-slide-to="0" data-target="#main-slider"></li>
             </ol>
         <div class="carousel-inner">
-                    <div style='background-image: url("{!! url('assets/images/default_slider.png') !!}")' class="item active">
+                    <div style='background-image: url("{{ url('assets/images/default_slider.png') }}")' class="item active">
                         <div class="container">
                             <div class="row">
                                 <div class="col-sm-12">

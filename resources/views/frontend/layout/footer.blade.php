@@ -51,14 +51,14 @@
                     <div class="media">
                         <div class="pull-left">
                             @if($article->path && $article->file_name)
-                                <a href="{!! URL::route('dashboard.article.show', array('slug'=>$article->slug)) !!}"><img src="{!! url($article->path . 'thumb_' . $article->file_name) !!}" style="border: 2px solid;" alt=""></a>
+                                <a href="{{ URL::route('dashboard.article.show', array('slug'=>$article->slug)) }}"><img src="{{ url($article->path . 'thumb_' . $article->file_name) }}" style="border: 2px solid;" alt=""></a>
                             @else
-                                <a href="{!! URL::route('dashboard.article.show', array('slug'=>$article->slug)) !!}"><img src="{!! url('assets/images/blog_s.png') !!}" alt="" style="border: 2px solid;"></a>
+                                <a href="{{ URL::route('dashboard.article.show', array('slug'=>$article->slug)) }}"><img src="{{ url('assets/images/blog_s.png') }}" alt="" style="border: 2px solid;"></a>
                             @endif
                         </div>
                         <div class="media-body">
-                            <span class="media-heading"><a href="{!! URL::route('dashboard.article.show', array('slug'=>$article->slug)) !!}">{!! $article->title !!}</a></span>
-                            <small class="muted">{!! $article->created_at !!}</small>
+                            <span class="media-heading"><a href="{{ URL::route('dashboard.article.show', array('slug'=>$article->slug)) }}">{{ $article->title }}</a></span>
+                            <small class="muted">{{ $article->created_at }}</small>
                         </div>
                     </div>
                     @endforeach
@@ -89,7 +89,7 @@
             <div class="tagcloud">
                 @if(isset($tags))
                     @foreach($tags as $tag)
-                        <a href="{!! URL::route('dashboard.tag', array('tag'=>$tag->slug)) !!}">{!! $tag->name !!}</a>
+                        <a href="{{ URL::route('dashboard.tag', array('tag'=>$tag->slug)) }}">{{ $tag->name }}</a>
                     @endforeach
                 @endif
             </div>
@@ -103,13 +103,13 @@
                     San Francisco, CA 94107<br>
                     <abbr title="Phone">P:</abbr> (123) 456-7890
                 </address>
-                <h4>{!!  trans('fully.newsletter') !!}</h4>
+                <h4>{{  trans('fully.newsletter') }}</h4>
 
                 {!! Form::open(array('route' => 'frontend.maillist.post', 'id'=>'newsletterForm', 'novalidate'=>'novalidate')) !!}
                 <div class="input-group">
-                    <input type="text" class="form-control" autocomplete="off" placeholder="{!!  trans('fully.enter_your_email') !!}">
+                    <input type="text" class="form-control" autocomplete="off" placeholder="{{  trans('fully.enter_your_email') }}">
                     <span class="input-group-btn">
-                        <button class="btn btn-danger" type="submit">{!!  trans('fully.button_save') !!}</button>
+                        <button class="btn btn-danger" type="submit">{{  trans('fully.button_save') }}</button>
                     </span>
                 </div>
                 {!! Form::close() !!}
@@ -124,15 +124,15 @@
                 <ul class="language_bar_chooser">
                     @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                     <li>
-                        <a rel="alternate" hreflang="{!!$localeCode!!}" href="{!! LaravelLocalization::getLocalizedURL($localeCode) !!}">
-                            {!! $properties['native'] !!}
+                        <a rel="alternate" hreflang="{{$localeCode}}" href="{{ LaravelLocalization::getLocalizedURL($localeCode) }}">
+                            {{ $properties['native'] }}
                         </a>
                     </li>
                     @endforeach
                 </ul>
             </div>
             <div class="col-sm-4">
-                &copy; 2015 <a target="_blank" href="http://www.sefakaragoz.com">Sefa Karagöz</a> {!! trans('fully.all_rights_reserved') !!}.
+                &copy; 2015 <a target="_blank" href="http://www.sefakaragoz.com">Sefa Karagöz</a> {{ trans('fully.all_rights_reserved') }}.
                 <br>
                 <br>
                 <a target="_blank" href="https://www.digitalocean.com/?refcode=33a90ba86b5a">DigitalOcean</a>

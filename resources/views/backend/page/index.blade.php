@@ -11,13 +11,13 @@
                 e.preventDefault();
                 $.ajax({
                     type: "POST",
-                    url: "{!! url(getLang() . '/admin/page/" + id + "/toggle-publish/') !!}",
+                    url: "{{ url(getLang() . '/admin/page/" + id + "/toggle-publish/') }}",
                     headers: {
                         'X-CSRF-Token': $('meta[name="_token"]').attr('content')
                     },
                     success: function (response) {
                         if (response['result'] == 'success') {
-                            var imagePath = (response['changed'] == 1) ? "{!!url('/')!!}/assets/images/publish.png" : "{!!url('/')!!}/assets/images/not_publish.png";
+                            var imagePath = (response['changed'] == 1) ? "{{url('/')}}/assets/images/publish.png" : "{{url('/')}}/assets/images/not_publish.png";
                             $("#publish-image-" + id).attr('src', imagePath);
                         }
                     },
@@ -33,7 +33,7 @@
             <small> | Control Panel</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="{!! URL::route('admin.dashboard') !!}">Dashboard</a></li>
+            <li><a href="{{ URL::route('admin.dashboard') }}">Dashboard</a></li>
             <li class="active">Page</li>
         </ol>
     </section>
@@ -45,7 +45,7 @@
             <br>
 
             <div class="pull-left">
-                <div class="btn-toolbar"><a href="{!! langRoute('admin.page.create') !!}" class="btn btn-primary">
+                <div class="btn-toolbar"><a href="{{ langRoute('admin.page.create') }}" class="btn btn-primary">
                         <span class="glyphicon glyphicon-plus"></span>&nbsp;Add Page </a></div>
             </div>
             <br> <br> <br>
@@ -67,31 +67,31 @@
                                 <td> {!! link_to_route(getLang(). '.admin.page.show', $page->title, $page->id, array(
                                     'class' => 'btn btn-link btn-xs' )) !!}
                                 </td>
-                                <td>{!! $page->created_at !!}</td>
-                                <td>{!! $page->updated_at !!}</td>
+                                <td>{{ $page->created_at }}</td>
+                                <td>{{ $page->updated_at }}</td>
                                 <td>
                                     <div class="btn-group">
                                         <a class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href="#">
                                             Action <span class="caret"></span> </a>
                                         <ul class="dropdown-menu">
                                             <li>
-                                                <a href="{!! langRoute('admin.page.show', array($page->id)) !!}">
+                                                <a href="{{ langRoute('admin.page.show', array($page->id)) }}">
                                                     <span class="glyphicon glyphicon-eye-open"></span>&nbsp;Show Page
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="{!! langRoute('admin.page.edit', array($page->id)) !!}">
+                                                <a href="{{ langRoute('admin.page.edit', array($page->id)) }}">
                                                     <span class="glyphicon glyphicon-edit"></span>&nbsp;Edit Page </a>
                                             </li>
                                             <li class="divider"></li>
                                             <li>
-                                                <a href="{!! URL::route('admin.page.delete', array($page->id)) !!}">
+                                                <a href="{{ URL::route('admin.page.delete', array($page->id)) }}">
                                                     <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;Delete
                                                     Page </a>
                                             </li>
                                             <li class="divider"></li>
                                             <li>
-                                                <a target="_blank" href="{!! URL::route('dashboard.page.show', ['slug' => $page->slug]) !!}">
+                                                <a target="_blank" href="{{ URL::route('dashboard.page.show', ['slug' => $page->slug]) }}">
                                                     <span class="glyphicon glyphicon-eye-open"></span>&nbsp;View On Site
                                                 </a>
                                             </li>
@@ -99,7 +99,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <a href="#" id="{!! $page->id !!}" class="publish"><img id="publish-image-{!! $page->id !!}" src="{!!url('/')!!}/assets/images/{!! ($page->is_published) ? 'publish.png' : 'not_publish.png'  !!}"/></a>
+                                    <a href="#" id="{{ $page->id }}" class="publish"><img id="publish-image-{{ $page->id }}" src="{{url('/')}}/assets/images/{{ ($page->is_published) ? 'publish.png' : 'not_publish.png'  }}"/></a>
                                 </td>
                             </tr>
                         @endforeach

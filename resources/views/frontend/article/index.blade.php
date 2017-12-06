@@ -39,20 +39,20 @@
                 @foreach($articles as $article)
                 <div class="blog-item">
                    @if($article->path)
-                    <img class="img-responsive img-blog" src="{!! url($article->path . $article->file_name) !!}" style="border: 1px solid #bdc3c7;" width="100%" alt=""/>
+                    <img class="img-responsive img-blog" src="{{ url($article->path . $article->file_name) }}" style="border: 1px solid #bdc3c7;" width="100%" alt=""/>
                    @else
-                    <img class="img-responsive img-blog" src="{!! url('assets/images/blog_default.png') !!}" style="border: 1px solid #bdc3c7;" width="100%" style="height: 290px;" alt=""/>
+                    <img class="img-responsive img-blog" src="{{ url('assets/images/blog_default.png') }}" style="border: 1px solid #bdc3c7;" width="100%" style="height: 290px;" alt=""/>
                    @endif
 
                     <div class="blog-content">
-                        <a href="{!! URL::route('dashboard.article.show', array('slug'=>$article->slug)) !!}"><h3>{!! $article->title !!}</h3></a>
+                        <a href="{{ URL::route('dashboard.article.show', array('slug'=>$article->slug)) }}"><h3>{{ $article->title }}</h3></a>
 
                         <div class="entry-meta">
                             <span><i class="icon-user"></i> <a href="#">Sefa</a></span>
-                            <span datetime="{!! $article->created_at !!}" class="time"></span>
+                            <span datetime="{{ $article->created_at }}" class="time"></span>
                         </div>
                         <p>{!! $article->content !!}</p>
-                        <a class="btn btn-default" href="{!! URL::route('dashboard.article.show', array('slug'=>$article->slug)) !!}">Read More <i class="icon-angle-right"></i></a>
+                        <a class="btn btn-default" href="{{ URL::route('dashboard.article.show', array('slug'=>$article->slug)) }}">Read More <i class="icon-angle-right"></i></a>
                     </div>
                 </div>
                 <!--/.blog-item-->

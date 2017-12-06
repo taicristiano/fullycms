@@ -32,19 +32,19 @@
         <li class="portfolio-item apps">
             <div class="item-inner">
                @if($project->path)
-                <img src="{!! url($project->path . 'thumb_' . $project->file_name) !!}" alt="">
+                <img src="{{ url($project->path . 'thumb_' . $project->file_name) }}" alt="">
                @else
-                <img src="{!! url('assets/images/project_thumb.png') !!}" alt="">
+                <img src="{{ url('assets/images/project_thumb.png') }}" alt="">
                @endif
-                <h5>{!! $project->title !!}</h5>
+                <h5>{{ $project->title }}</h5>
                 <div class="overlay">
                 @if($project->path)
-                    <a class="preview btn btn-danger" href="{!! url($project->path . $project->file_name) !!}" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
+                    <a class="preview btn btn-danger" href="{{ url($project->path . $project->file_name) }}" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
                 @else
-                    <a class="preview btn btn-danger" href="{!! url('assets/images/default.png') !!}" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
+                    <a class="preview btn btn-danger" href="{{ url('assets/images/default.png') }}" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
                 @endif
 
-                    <a class="preview btn btn-danger" href="{!! URL::route('dashboard.project.show', array('slug'=>$project->slug)) !!}" ><i class="icon-info-sign"></i></a>
+                    <a class="preview btn btn-danger" href="{{ URL::route('dashboard.project.show', array('slug'=>$project->slug)) }}" ><i class="icon-info-sign"></i></a>
                 </div>
             </div>
         </li><!--/.portfolio-item-->

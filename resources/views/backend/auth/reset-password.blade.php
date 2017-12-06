@@ -43,7 +43,7 @@
                     {!! Form::open(array('url'=>'admin/reset-password', 'class' => 'form-signup', 'id' => 'form-signin')) !!}
                     @if ($errors->count() > 0)  @foreach( $errors->all() as $message )
                     <div class="alert alert-danger">
-                           <a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a>{!! $message !!}
+                           <a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a>{{ $message }}
                     </div>
                       @endforeach
                     @endif

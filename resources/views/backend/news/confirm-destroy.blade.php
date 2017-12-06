@@ -3,7 +3,7 @@
   <section class="content-header">
     <h1> News <small> | Delete News</small> </h1>
     <ol class="breadcrumb">
-      <li><a href="{!! url(getLang() . '/admin/news') !!}"><i class="fa fa-bookmark"></i> News</a></li>
+      <li><a href="{{ url(getLang() . '/admin/news') }}"><i class="fa fa-bookmark"></i> News</a></li>
       <li class="active">Add News</li>
     </ol>
   </section>
@@ -15,7 +15,7 @@
   <div class="alert alert-warning">
     <div class="pull-left"><b> Be Careful!</b> Are you sure you want to delete <b>{!! $news->title !!} </b> ? </div>
     <div class="pull-right"> {!! Form::submit( 'Yes', array( 'class' => 'btn btn-danger' ) ) !!}
-      {!! link_to( URL::previous(), 'No', array( 'class' => 'btn btn-primary' ) ) !!} </div>
+      {{ link_to( URL::previous(), 'No', array( 'class' => 'btn btn-primary' ) ) }} </div>
     <div class="clearfix"></div>
   </div>
   {!! Form::close() !!} </div>

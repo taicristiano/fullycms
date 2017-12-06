@@ -10,7 +10,7 @@
         <small> | Control Panel</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="{!! url(getLang(). '/admin') !!}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="{{ url(getLang(). '/admin') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li class="active">Slider</li>
     </ol>
 </section>
@@ -21,7 +21,7 @@
         <br>
 
         <div class="pull-left">
-            <div class="btn-toolbar"><a href="{!! langRoute('admin.slider.create') !!}" class="btn btn-primary">
+            <div class="btn-toolbar"><a href="{{ langRoute('admin.slider.create') }}" class="btn btn-primary">
                     <span class="glyphicon glyphicon-plus"></span>&nbsp;Add Slider </a></div>
         </div>
         <br>
@@ -40,8 +40,8 @@
                 <tbody>
                 @foreach( $sliders as $slider )
                 <tr>
-                    <td>{!! $slider->title !!}</td>
-                    <td>{!! $slider->description !!}</td>
+                    <td>{{ $slider->title }}</td>
+                    <td>{{ $slider->description }}</td>
                     <td>
                         <div class="btn-group">
                             <a class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href="#">
@@ -50,13 +50,13 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="{!! langRoute('admin.slider.edit', array($slider->id)) !!}">
+                                    <a href="{{ langRoute('admin.slider.edit', array($slider->id)) }}">
                                         <span class="glyphicon glyphicon-edit"></span>&nbsp;Edit Slider
                                     </a>
                                 </li>
                                 <li class="divider"></li>
                                 <li>
-                                    <a href="{!! URL::route('admin.slider.delete', array($slider->id)) !!}">
+                                    <a href="{{ URL::route('admin.slider.delete', array($slider->id)) }}">
                                         <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;Delete Slider
                                     </a>
                                 </li>

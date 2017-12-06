@@ -44,13 +44,13 @@
 
                     @if ($errors->has('forgot-password'))
                     <div class="alert alert-danger">
-                        <a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a>{!! $errors->first('forgot-password', ':message') !!}
+                        <a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a>{{ $errors->first('forgot-password', ':message') }}
                     </div>
                     @endif
 
                     @if ($errors->has('email'))
                     <div class="alert alert-danger">
-                        <a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a>{!! $errors->first('email', ':message') !!}
+                        <a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;</a>{{ $errors->first('email', ':message') }}
                     </div>
                     @endif
 

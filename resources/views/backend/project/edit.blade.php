@@ -8,7 +8,7 @@
 <section class="content-header">
     <h1> Project <small> | Update Project</small> </h1>
     <ol class="breadcrumb">
-        <li><a href="{!! url(getLang(). '/admin/project') !!}"><i class="fa fa-gears"></i> Project</a></li>
+        <li><a href="{{ url(getLang(). '/admin/project') }}"><i class="fa fa-gears"></i> Project</a></li>
         <li class="active">Update Project</li>
     </ol>
 </section>
@@ -19,7 +19,7 @@
     {!! Form::open( array( 'route' => array( getLang() . '.admin.project.update', $project->id), 'method' => 'PATCH', 'files'=>true)) !!}
 
     <!-- Title -->
-    <div class="control-group {!! $errors->has('title') ? 'has-error' : '' !!}">
+    <div class="control-group {{ $errors->has('title') ? 'has-error' : '' }}">
         <label class="control-label" for="title">Title</label>
         <div class="controls"> {!! Form::text('title', $project->title, array('class'=>'form-control', 'id' => 'title', 'placeholder'=>'Title', 'value'=>Input::old('title'))) !!}
             @if ($errors->first('title')) <span class="help-block">{!! $errors->first('title') !!}</span> @endif </div>
@@ -28,7 +28,7 @@
 
 
     <!-- Description -->
-    <div class="control-group {!! $errors->has('description') ? 'has-error' : '' !!}">
+    <div class="control-group {{ $errors->has('description') ? 'has-error' : '' }}">
         <label class="control-label" for="title">Description</label>
         <div class="controls">
             {!! Form::textarea('description', $project->description, array('class'=>'form-control', 'id' => 'description', 'placeholder'=>'Description', 'value'=>Input::old('description'))) !!}
@@ -37,9 +37,9 @@
     <br>
 
     <!-- Image -->
-    <div class="fileinput fileinput-new control-group {!! $errors->has('image') ? 'has-error' : '' !!}" data-provides="fileinput">
+    <div class="fileinput fileinput-new control-group {{ $errors->has('image') ? 'has-error' : '' }}" data-provides="fileinput">
         <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-            <img data-src="" {!! (($project->path) ? "src='".url($project->path)."'" : null) !!} alt="...">
+            <img data-src="" {{ (($project->path) ? "src='".url($project->path)."'" : null) }} alt="...">
         </div>
         <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
         <div>
@@ -54,7 +54,7 @@
     <script type="text/javascript">
         window.onload = function () {
             CKEDITOR.replace('description', {
-                "filebrowserBrowseUrl": "{!! url('filemanager/show') !!}"
+                "filebrowserBrowseUrl": "{{ url('filemanager/show') }}"
             });
         };
     </script>

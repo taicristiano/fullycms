@@ -12,7 +12,7 @@
         <small> | Update Slider</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="{!! url(getLang(). '/admin/slider') !!}"><i class="fa fa-tint"></i> Slider</a></li>
+        <li><a href="{{ url(getLang(). '/admin/slider') }}"><i class="fa fa-tint"></i> Slider</a></li>
         <li class="active">Update Slider</li>
     </ol>
 </section>
@@ -24,35 +24,35 @@
     {!! Form::open( array( 'route' => array( getLang() . '.admin.slider.update', $slider->id), 'method' => 'PATCH', 'files'=>true)) !!}
 
     <!-- Title -->
-    <div class="control-group {!! $errors->has('title') ? 'has-error' : '' !!}">
+    <div class="control-group {{ $errors->has('title') ? 'has-error' : '' }}">
         <label class="control-label" for="title">Title</label>
 
         <div class="controls">
             {!! Form::text('title', $slider->title, array('class'=>'form-control', 'id' => 'title', 'placeholder'=>'Title', 'value'=>Input::old('title'))) !!}
             @if ($errors->first('title'))
-            <span class="help-block">{!! $errors->first('title') !!}</span>
+            <span class="help-block">{{ $errors->first('title') }}</span>
             @endif
         </div>
     </div>
     <br>
 
     <!-- Description -->
-    <div class="control-group {!! $errors->has('description') ? 'has-error' : '' !!}">
+    <div class="control-group {{ $errors->has('description') ? 'has-error' : '' }}">
         <label class="control-label" for="description">Description</label>
 
         <div class="controls">
             {!! Form::textarea('description', $slider->description, array('class'=>'form-control', 'id' => 'description', 'placeholder'=>'Description', 'value'=>Input::old('description'))) !!}
             @if ($errors->first('description'))
-            <span class="help-block">{!! $errors->first('description') !!}</span>
+            <span class="help-block">{{ $errors->first('description') }}</span>
             @endif
         </div>
     </div>
     <br>
 
     <!-- Image -->
-    <div class="fileinput fileinput-new control-group {!! $errors->has('image') ? 'has-error' : '' !!}" data-provides="fileinput">
+    <div class="fileinput fileinput-new control-group {{ $errors->has('image') ? 'has-error' : '' }}" data-provides="fileinput">
         <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-            <img data-src="" {!! (($slider->path) ? "src='".url($slider->path)."'" : null) !!} alt="...">
+            <img data-src="" {{ (($slider->path) ? "src='".url($slider->path)."'" : null) }} alt="...">
         </div>
         <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
         <div>

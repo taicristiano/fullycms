@@ -11,13 +11,13 @@
             e.preventDefault();
             $.ajax({
                 type: "POST",
-                url: "{!! url(getLang() . '/admin/photo-gallery/" + id + "/toggle-publish/') !!}",
+                url: "{{ url(getLang() . '/admin/photo-gallery/" + id + "/toggle-publish/') }}",
                 headers: {
                     'X-CSRF-Token': $('meta[name="_token"]').attr('content')
                 },
                 success: function (response) {
                     if (response['result'] == 'success') {
-                        var imagePath = (response['changed'] == 1) ? "{!!url('/')!!}/assets/images/publish.png" : "{!!url('/')!!}/assets/images/not_publish.png";
+                        var imagePath = (response['changed'] == 1) ? "{{url('/')}}/assets/images/publish.png" : "{{url('/')}}/assets/images/not_publish.png";
                         $("#publish-image-" + id).attr('src', imagePath);
                     }
                 },
@@ -33,7 +33,7 @@
         <small> | Control Panel</small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="{!! url(getLang(). '/admin') !!}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="{{ url(getLang(). '/admin') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li class="active">Photo Gallery</li>
     </ol>
 </section>
@@ -45,7 +45,7 @@
         <br>
 
         <div class="pull-left">
-            <div class="btn-toolbar"><a href="{!! langRoute('admin.photo-gallery.create') !!}" class="btn btn-primary">
+            <div class="btn-toolbar"><a href="{{ langRoute('admin.photo-gallery.create') }}" class="btn btn-primary">
                     <span class="glyphicon glyphicon-plus"></span>&nbsp;Add Photo Gallery </a></div>
         </div>
         <br>
@@ -67,8 +67,8 @@
                 @foreach( $photo_galleries as $photo_gallery )
                 <tr>
                     <td> {!! link_to_route(getLang(). '.admin.photo-gallery.show', $photo_gallery->title, $photo_gallery->id, array( 'class' => 'btn btn-link btn-xs' )) !!}
-                    <td>{!! $photo_gallery->created_at !!}</td>
-                    <td>{!! $photo_gallery->updated_at !!}</td>
+                    <td>{{ $photo_gallery->created_at }}</td>
+                    <td>{{ $photo_gallery->updated_at }}</td>
                     <td>
                         <div class="btn-group">
                             <a class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href="#">
@@ -77,24 +77,24 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="{!! langRoute('admin.photo-gallery.show', array($photo_gallery->id)) !!}">
+                                    <a href="{{ langRoute('admin.photo-gallery.show', array($photo_gallery->id)) }}">
                                         <span class="glyphicon glyphicon-eye-open"></span>&nbsp;Show Photo Gallery
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{!! langRoute('admin.photo-gallery.edit', array($photo_gallery->id)) !!}">
+                                    <a href="{{ langRoute('admin.photo-gallery.edit', array($photo_gallery->id)) }}">
                                         <span class="glyphicon glyphicon-edit"></span>&nbsp;Edit Photo Gallery
                                     </a>
                                 </li>
                                 <li class="divider"></li>
                                 <li>
-                                    <a href="{!! URL::route('admin.photo-gallery.delete', array($photo_gallery->id)) !!}">
+                                    <a href="{{ URL::route('admin.photo-gallery.delete', array($photo_gallery->id)) }}">
                                         <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;Delete Photo Gallery
                                     </a>
                                 </li>
                                 <li class="divider"></li>
                                 <li>
-                                    <a target="_blank" href="{!! URL::route('dashboard.photo_gallery.show', ['slug' => $photo_gallery->slug]) !!}">
+                                    <a target="_blank" href="{{ URL::route('dashboard.photo_gallery.show', ['slug' => $photo_gallery->slug]) }}">
                                         <span class="glyphicon glyphicon-eye-open"></span>&nbsp;View On Site
                                     </a>
                                 </li>
@@ -102,7 +102,7 @@
                         </div>
                     </td>
                     <td>
-                        <a href="#" id="{!! $photo_gallery->id !!}" class="publish"><img id="publish-image-{!! $photo_gallery->id !!}" src="{!!url('/')!!}/assets/images/{!! ($photo_gallery->is_published) ? 'publish.png' : 'not_publish.png'  !!}"/></a>
+                        <a href="#" id="{{ $photo_gallery->id }}" class="publish"><img id="publish-image-{{ $photo_gallery->id }}" src="{{url('/')}}/assets/images/{{ ($photo_gallery->is_published) ? 'publish.png' : 'not_publish.png'  }}"/></a>
                     </td>
                 </tr>
                 @endforeach

@@ -19,23 +19,23 @@
 
                         <?php $active = "active"; ?>
                         @foreach(array_chunk($projects->all(), 3) as $row)
-                        <div class="item {!! $active !!}">
+                        <div class="item {{ $active }}">
                             <div class="row">
                                 @foreach($row as $item)
                                 <div class="col-xs-4">
                                     <div class="portfolio-item">
                                         <div class="item-inner">
                                             @if($item->path)
-                                            <img class="img-responsive" src="{!! url($item->path . 'thumb_' . $item->file_name) !!}" alt="">
+                                            <img class="img-responsive" src="{{ url($item->path . 'thumb_' . $item->file_name) }}" alt="">
                                             @else
-                                            <img class="img-responsive" src="{!! url('assets/images/project_thumb.png') !!}" alt="">
+                                            <img class="img-responsive" src="{{ url('assets/images/project_thumb.png') }}" alt="">
                                             @endif
                                             <h5>
-                                                {!! $item->title !!}
+                                                {{ $item->title }}
                                             </h5>
 
                                             <div class="overlay">
-                                                <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="{!! url($item->path) !!}" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
+                                                <a class="preview btn btn-danger" title="Malesuada fames ac turpis egestas" href="{{ url($item->path) }}" rel="prettyPhoto"><i class="icon-eye-open"></i></a>
                                             </div>
                                         </div>
                                     </div>

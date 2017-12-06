@@ -24,10 +24,10 @@
     <ul class="faq unstyled">
         @foreach($faqs as $faq)
         <li>
-            <span class="number">{!! $faq->id !!}</span>
+            <span class="number">{{ $faq->id }}</span>
             <div>
-                <h4>{!! $faq->question !!}</h4>
-                <p>{!! $faq->answer !!}</p>
+                <h4>{{ $faq->question }}</h4>
+                <p>{{ $faq->answer }}</p>
             </div>
         </li>
         @endforeach
